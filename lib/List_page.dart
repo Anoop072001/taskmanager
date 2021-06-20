@@ -55,11 +55,11 @@ class _List_pageState extends State<List_page> {
                       title: Text(
                         title,
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 22),
+                            fontWeight: FontWeight.bold, fontSize: 30),
                       ),
                       subtitle: Text(descp,
                           style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 18)),
+                              fontWeight: FontWeight.normal, fontSize: 18)),
                       trailing: IconButton(
                           icon: Icon(
                             Icons.delete,
