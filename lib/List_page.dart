@@ -30,7 +30,7 @@ class _List_pageState extends State<List_page> {
           backgroundColor: Colors.redAccent,
           title: Center(
             child: Text(
-              "Tasks",
+              "TaskMaster",
               style: GoogleFonts.poppins(
                 textStyle: TextStyle(
                   color: Colors.white,
@@ -86,8 +86,11 @@ class _List_pageState extends State<List_page> {
             showDialog(
               context: context,
               builder: (_) {
-                return Dialog(
-                  child: Container(
+                return AlertDialog(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(32.0))),
+                  content: Container(
+                      width: 260,
                       padding: EdgeInsets.all(32),
                       child: Column(mainAxisSize: MainAxisSize.min, children: [
                         TextField(
@@ -101,12 +104,23 @@ class _List_pageState extends State<List_page> {
                         ),
                         SizedBox(height: 16),
                         TextButton(
-                          child: Text("submit"),
+                          child: Text(
+                            "ADD",
+                            style: GoogleFonts.poppins(
+                              textStyle: TextStyle(
+                                color: Colors.redAccent,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
                           onPressed: () {
                             final key = _taskController.text;
                             final value = _descpController.text;
 
                             taskBox.put(key, value);
+                            _taskController.clear();
+                            _descpController.clear();
                             Navigator.pop(context);
                           },
                         )
