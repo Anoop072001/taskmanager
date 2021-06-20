@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:taskmanager/Gcalendar.dart';
 
 class List_page extends StatefulWidget {
   const List_page({Key key}) : super(key: key);
@@ -12,7 +14,9 @@ class List_page extends StatefulWidget {
 
 class _List_pageState extends State<List_page> {
   Box<String> taskBox;
-
+  CalendarClient calendarClient = CalendarClient();
+  DateTime endTime = DateTime.now().add(Duration(days: 1));
+  DateTime startTime = DateTime.now();
   final TextEditingController _taskController = TextEditingController();
   final TextEditingController _descpController = TextEditingController();
 
@@ -62,17 +66,39 @@ class _List_pageState extends State<List_page> {
                               fontWeight: FontWeight.normal, fontSize: 18)),
                       trailing: IconButton(
                           icon: Icon(
-                            Icons.delete,
+                            Icons.alarm,
                             color: Colors.redAccent,
                           ),
                           onPressed: () {
-                            final key = title;
-                            taskBox.delete(key);
+                            DatePicker.showDatePicker(context,
+                                showTitleActions: true,
+                                minTime: DateTime(2021, 1, 1),
+                                maxTime: DateTime(2030, 6, 7),
+                                onChanged: (date) {
+                              print('change $date');
+                            }, onConfirm: (date) {
+                              setState(() {
+                                this.startTime = date;
+                                calendarClient.insert(
+                                    descp, startTime, endTime);
+                              });
+                            },
+                                currentTime: DateTime.now(),
+                                locale: LocaleType.en);
                           }),
+                      // IconButton(
+                      //     icon: Icon(
+                      //       Icons.delete,
+                      //       color: Colors.redAccent,
+                      //     ),
+                      //     onPressed: () {
+                      //       final key = title;
+                      //       taskBox.delete(key);
+                      //     })
                     );
                   },
                   separatorBuilder: (_, index) => Divider(
-                        color: Colors.grey[600],
+                        color: Colors.grey[800],
                       ),
                   itemCount: tasks.keys.toList().length);
             },

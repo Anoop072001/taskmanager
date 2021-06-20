@@ -24,12 +24,13 @@ dependencies:
   flutter:
     sdk: flutter
   googleapis: ^3.0.0
-  googleapis_auth: ^1.1.0  
-  dio: ^4.0.0  
+  googleapis_auth: ^1.1.0   
   path_provider: 2.0.0
   hive: ^2.0.4
   hive_flutter: ^1.0.0
   google_fonts: ^2.1.0
+  url_launcher: ^6.0.6
+  flutter_datetime_picker: ^1.5.1
 
 
   # The following adds the Cupertino Icons font to your application.
