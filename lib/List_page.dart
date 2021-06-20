@@ -104,11 +104,21 @@ class _List_pageState extends State<List_page> {
                         ),
                         SizedBox(height: 16),
                         TextButton(
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(
+                              Colors.redAccent,
+                            ),
+                            shape: MaterialStateProperty.all(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(13.0),
+                              ),
+                            ),
+                          ),
                           child: Text(
                             "ADD",
                             style: GoogleFonts.poppins(
                               textStyle: TextStyle(
-                                color: Colors.redAccent,
+                                color: Colors.white,
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
                               ),
