@@ -58,43 +58,123 @@ class _List_pageState extends State<List_page> {
                     return ListTile(
                       title: Text(
                         title,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 30),
+                        style: GoogleFonts.poppins(
+                          textStyle: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 30),
+                        ),
                       ),
-                      subtitle: Text(descp,
-                          style: TextStyle(
-                              fontWeight: FontWeight.normal, fontSize: 18)),
-                      trailing: IconButton(
-                          icon: Icon(
-                            Icons.alarm,
-                            color: Colors.redAccent,
-                          ),
-                          onPressed: () {
-                            DatePicker.showDatePicker(context,
-                                showTitleActions: true,
-                                minTime: DateTime(2021, 1, 1),
-                                maxTime: DateTime(2030, 6, 7),
-                                onChanged: (date) {
-                              print('change $date');
-                            }, onConfirm: (date) {
-                              setState(() {
-                                this.startTime = date;
-                                calendarClient.insert(
-                                    descp, startTime, endTime);
-                              });
-                            },
-                                currentTime: DateTime.now(),
-                                locale: LocaleType.en);
-                          }),
-                      // IconButton(
+                      subtitle: Text(
+                        descp,
+                        style: GoogleFonts.poppins(
+                            textStyle: TextStyle(
+                                fontWeight: FontWeight.normal, fontSize: 18)),
+                      ),
+                      // trailing: IconButton(
                       //     icon: Icon(
-                      //       Icons.delete,
+                      //       Icons.alarm,
                       //       color: Colors.redAccent,
                       //     ),
                       //     onPressed: () {
-                      //       final key = title;
-                      //       taskBox.delete(key);
-                      //     })
+                      //       DatePicker.showDatePicker(context,
+                      //           showTitleActions: true,
+                      //           minTime: DateTime(2021, 1, 1),
+                      //           maxTime: DateTime(2030, 6, 7),
+                      //           onChanged: (date) {
+                      //         print('change $date');
+                      //       }, onConfirm: (date) {
+                      //         setState(() {
+                      //           this.startTime = date;
+                      //           calendarClient.insert(
+                      //               descp, startTime, endTime);
+                      //         });
+                      //       },
+                      //           currentTime: DateTime.now(),
+                      //           locale: LocaleType.en);
+                      //     }),
+
+                      onTap: () {
+                        showDialog(
+                            context: context,
+                            builder: (_) {
+                              return AlertDialog(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(32.0))),
+                                content: Container(
+                                  width: 260,
+                                  padding: EdgeInsets.all(32),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        title,
+                                        style: GoogleFonts.poppins(
+                                            textStyle: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 30,
+                                        )),
+                                      ),
+                                      SizedBox(height: 16),
+                                      Text(
+                                        descp,
+                                        style: GoogleFonts.poppins(
+                                            textStyle: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 18,
+                                        )),
+                                      ),
+                                      SizedBox(height: 16),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          IconButton(
+                                              icon: Icon(
+                                                Icons.delete,
+                                                color: Colors.redAccent,
+                                              ),
+                                              onPressed: () {
+                                                final key = title;
+                                                taskBox.delete(key);
+                                                Navigator.pop(context);
+                                              }),
+                                          SizedBox(width: 15),
+                                          IconButton(
+                                              icon: Icon(
+                                                Icons.alarm,
+                                                color: Colors.redAccent,
+                                              ),
+                                              onPressed: () {
+                                                DatePicker.showDatePicker(
+                                                    context,
+                                                    showTitleActions: true,
+                                                    minTime:
+                                                        DateTime(2021, 1, 1),
+                                                    maxTime:
+                                                        DateTime(2030, 6, 7),
+                                                    onChanged: (date) {
+                                                  print('change $date');
+                                                }, onConfirm: (date) {
+                                                  setState(() {
+                                                    this.startTime = date;
+                                                    calendarClient.insert(descp,
+                                                        startTime, endTime);
+                                                  });
+                                                  Navigator.pop(context);
+                                                },
+                                                    currentTime: DateTime.now(),
+                                                    locale: LocaleType.en);
+                                              }),
+                                        ],
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              );
+                            });
+                      },
                     );
                   },
                   separatorBuilder: (_, index) => Divider(
