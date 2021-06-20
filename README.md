@@ -18,5 +18,5 @@ How awesome is that right?
 You have to allow to app to configure in Google Calendar everytime you click Clock icon, and since my app isn't Google verified you have to go to advanced and allow it in "This app isn't verified by Google" webpage. Other than that it's all good
 
 # Have any suggestion?
-Contact me through social media or Email given in my profile,I'm all ears!!
+Contact me through social media or Email given in my profile,I'm all ears!!:ears:
   
