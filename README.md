@@ -14,7 +14,7 @@ How awesome is that right?
   <li>reminder will be added successfully</li>
 </ol>
 
-# DownSide
+# Drawback :warning:
 You have to allow to app to configure in Google Calendar everytime you click Clock icon, and since my app isn't Google verified you have to go to advanced and allow it in "This app isn't verified by Google" webpage. Other than that it's all good
 
 # Have any suggestion?
